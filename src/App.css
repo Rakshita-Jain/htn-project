@@ -45,6 +45,7 @@
   margin-left: 200px;
   margin-right: 200px;
   padding-top: 30px;
+  cursor: pointer;
 }
 
 .button a {
@@ -69,7 +70,25 @@
   color: #E26F6F;
   border: 1px solid #E26F6F;
 }
-.background-1 {
- background-repeat: no-repeat;
- background-size:100px 100px;
+
+.background-bottom {
+  background: url(./assets/decoration-background.png);
+  height: 300px;
+  width: 500px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+}
+
+.background-top {
+  background: url(./assets/decoration2-background.png);
+  height: 300px;
+  width: 500px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  right: -229px;
 }
