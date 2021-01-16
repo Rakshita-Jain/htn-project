@@ -1,4 +1,4 @@
-import '../App.css';
+/*import '../App.css';
 import React, {useState} from 'react';
 
 export const Map = () => {
@@ -59,4 +59,4 @@ export const Map = () => {
 
     </div>
   );
-}
+*/
