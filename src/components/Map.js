@@ -1,18 +1,23 @@
+<<<<<<< HEAD
 /*import '../App.css';
 import React, {useState} from 'react';
+=======
+import '../App.css';
+import React, { useState } from 'react';
+>>>>>>> e3b96d4c6d4fd3e47592f1ebf74f017e8b6ff8db
 
 export const Map = () => {
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
   const [userAddress, setUserAddress] = useState(null);
-  
-  const getLocation = ()=> {
+
+  const getLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(getCoordinates, handelLocationError);
-    } else 
+    } else
       alert("Geolocation is not supported by this browser.");
-    }
   }
+
 
   const getCoordinates = (position) => {
     setLatitude(position.coords.latitude);
@@ -21,7 +26,7 @@ export const Map = () => {
 
 
   const handelLocationError = (error) => {
-    switch(error.code) {
+    switch (error.code) {
       case error.PERMISSION_DENIED:
         alert("User denied the request for Geolocation.")
         break;
@@ -35,13 +40,13 @@ export const Map = () => {
         alert("An unknown error occurred.")
         break;
       default:
-      alert("An unknown error occured.")
+        alert("An unknown error occured.")
     }
   }
 
   return (
     <div className="Map">
-      <h2> 
+      <h2>
         Geolocation Test
       </h2>
 
@@ -51,12 +56,14 @@ export const Map = () => {
       <p>Longitude: {longitude}</p>
       <h4>Google Maps Geocoding</h4>
       <p>Address: {userAddress}</p>
-      <img src={`https://maps.googleapis.com/maps/api/staticmap?center=${latitude},${longitude}
-        &zoom=12&size=400x400&maptype=roadmap\
-        
-        &key=AIzaSyDu4BYAiI5YwgKcxGaoPxElCcbQZSy1OK8
-        alt="Your Location on Google Maps"`}/>
+      <img src={`https://maps.googleapis.com/maps/api/staticmap?size=512x512&maptype=roadmap\
+      &markers=size:mid%7Ccolor:red%7C${latitude},${longitude}&key=AIzaSyDu4BYAiI5YwgKcxGaoPxElCcbQZSy1OK8`}
+      alt="Your Location on Google Maps"/>
 
     </div>
   );
+<<<<<<< HEAD
 */
+=======
+}
+>>>>>>> e3b96d4c6d4fd3e47592f1ebf74f017e8b6ff8db
