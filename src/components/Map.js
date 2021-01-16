@@ -1,18 +1,18 @@
 import '../App.css';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 export const Map = () => {
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
   const [userAddress, setUserAddress] = useState(null);
-  
-  const getLocation = ()=> {
+
+  const getLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(getCoordinates, handelLocationError);
-    } else 
+    } else
       alert("Geolocation is not supported by this browser.");
-    }
   }
+
 
   const getCoordinates = (position) => {
     setLatitude(position.coords.latitude);
@@ -21,7 +21,7 @@ export const Map = () => {
 
 
   const handelLocationError = (error) => {
-    switch(error.code) {
+    switch (error.code) {
       case error.PERMISSION_DENIED:
         alert("User denied the request for Geolocation.")
         break;
@@ -35,13 +35,13 @@ export const Map = () => {
         alert("An unknown error occurred.")
         break;
       default:
-      alert("An unknown error occured.")
+        alert("An unknown error occured.")
     }
   }
 
   return (
     <div className="Map">
-      <h2> 
+      <h2>
         Geolocation Test
       </h2>
 
@@ -55,7 +55,7 @@ export const Map = () => {
         &zoom=12&size=400x400&maptype=roadmap\
         
         &key=AIzaSyDu4BYAiI5YwgKcxGaoPxElCcbQZSy1OK8
-        alt="Your Location on Google Maps"`}/>
+        alt="Your Location on Google Maps"`} />
 
     </div>
   );
