@@ -51,11 +51,9 @@ export const Map = () => {
       <p>Longitude: {longitude}</p>
       <h4>Google Maps Geocoding</h4>
       <p>Address: {userAddress}</p>
-      <img src={`https://maps.googleapis.com/maps/api/staticmap?center=${latitude},${longitude}
-        &zoom=12&size=400x400&maptype=roadmap\
-        
-        &key=AIzaSyDu4BYAiI5YwgKcxGaoPxElCcbQZSy1OK8
-        alt="Your Location on Google Maps"`} />
+      <img src={`https://maps.googleapis.com/maps/api/staticmap?size=512x512&maptype=roadmap\
+      &markers=size:mid%7Ccolor:red%7C43.670324,-79.386802&key=AIzaSyDu4BYAiI5YwgKcxGaoPxElCcbQZSy1OK8`}
+      alt="Your Location on Google Maps"/>
 
     </div>
   );
