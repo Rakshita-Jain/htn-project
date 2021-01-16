@@ -1,24 +1,39 @@
 import '../App.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export const Map = () => {
-  const [latitude, setLatitude] = useState(null);
-  const [longitude, setLongitude] = useState(null);
-  const [userAddress, setUserAddress] = useState(null);
+  const [userAddress, setUserAddress] = useState("");
+  const [coordinates, setCoordinates] = useState({latitude: "43.793607699999995" , longitude: "-79.3284823"});
+  const [isAddressVisible, setAddressVisiblitly] = useState(false);
 
-  const getLocation = () => {
+  useEffect(() =>{
+    console.log(coordinates.latitude + "" + coordinates.longitude)
+    getUserAddress();
+  }, [coordinates])
+
+  const getLocation = async () => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(getCoordinates, handelLocationError);
+      // navigator.geolocation.getCurrentPosition(getCoordinates, handelLocationError);
+     
+      await navigator.geolocation.getCurrentPosition( (position) => {
+        setCoordinates({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        });
+
+        setAddressVisiblitly(true);
+      });
+
     } else
       alert("Geolocation is not supported by this browser.");
   }
 
-
-  const getCoordinates = (position) => {
-    setLatitude(position.coords.latitude);
-    setLongitude(position.coords.longitude);
+ const getUserAddress = async () => {
+  
+  const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${coordinates.latitude},${coordinates.longitude}&key=AIzaSyDu4BYAiI5YwgKcxGaoPxElCcbQZSy1OK8`);
+  const data = await response.json();
+  setUserAddress(data.results[0].formatted_address);
   }
-
 
   const handelLocationError = (error) => {
     switch (error.code) {
@@ -45,14 +60,14 @@ export const Map = () => {
         Geolocation Test
       </h2>
 
-      <button onClick={getLocation}>Get coordinates</button>
+      <button onClick={()=> getLocation()}>Get coordinates</button>
       <h4>Coordinates</h4>
-      <p>Latitude: {latitude}</p>
-      <p>Longitude: {longitude}</p>
+      <p>Latitude: {coordinates.latitude}</p>
+      <p>Longitude: {coordinates.longitude}</p>
       <h4>Google Maps Geocoding</h4>
-      <p>Address: {userAddress}</p>
+      <p>Address: { isAddressVisible ? userAddress : "" }</p>
       <img src={`https://maps.googleapis.com/maps/api/staticmap?size=512x512&maptype=roadmap\
-      &markers=size:mid%7Ccolor:red%7C${latitude},${longitude}&key=AIzaSyDu4BYAiI5YwgKcxGaoPxElCcbQZSy1OK8`}
+      &markers=size:mid%7Ccolor:red%7C${coordinates.latitude},${coordinates.longitude}&key=AIzaSyDu4BYAiI5YwgKcxGaoPxElCcbQZSy1OK8`}
       alt="Your Location on Google Maps"/>
 
     </div>
