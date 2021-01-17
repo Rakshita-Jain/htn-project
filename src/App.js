@@ -3,21 +3,33 @@ import { Map } from './components/Map';
 
 const App = () => {
   return (
+    
     <div className= "App">
-      <h1 className="welcome">Welcome to</h1>
+      <h1 className="welcome">Welcome to Healthtech!</h1>
+      <div className="background-top"></div>
       <div className="doctors">
-       <img id="main-pic" alt="doctors"></img>
+
       </div>
-      
-      <p className="button-click">Click the button below to chat with our bot and find the best hospital near you</p>
+    
+      <p className="button-click">Click the button below to chat with our</p> 
+      <p className="button-click"> bot and find the best hospital near you</p>
       <div className="button">
-          <div className="button-text">
+        <div class="fb-customerchat"
+                 page_id="<PAGE_ID>">
+          <a href="/Map" className="button-text">
             CHAT NOW
-          </div>
+          
+          </a>
+        </div>
+          
       </div>
+
+      <div className="background-bottom"></div>
      
-      <Map/>
+      
      </div>
   )
 }  
+
+
 export default App;
