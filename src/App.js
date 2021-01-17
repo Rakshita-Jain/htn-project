@@ -3,6 +3,7 @@ import { Map } from './components/Map';
 
 const App = () => {
   return (
+    
     <div className= "App">
       <h1 className="welcome">Welcome to Healthtech!</h1>
       <div className="background-top"></div>
@@ -15,17 +16,20 @@ const App = () => {
       <div className="button">
         <div class="fb-customerchat"
                  page_id="<PAGE_ID>">
-          <div className="button-text">
+          <a href="/Map" className="button-text">
             CHAT NOW
-          </div>
+          
+          </a>
         </div>
           
       </div>
 
       <div className="background-bottom"></div>
      
-      <Map/>
+      
      </div>
   )
 }  
+
+
 export default App;
